@@ -326,6 +326,14 @@ class _GoogleMapState extends State<GoogleMap> {
     }
   }
 
+  void onMarkerDragStart(String markerIdParam, LatLng position) {
+    assert(markerIdParam != null);
+    final MarkerId markerId = MarkerId(markerIdParam);
+    if (_markers[markerId]?.onDragStart != null) {
+      _markers[markerId].onDragStart(position);
+    }
+  }
+
   void onMarkerDragEnd(String markerIdParam, LatLng position) {
     assert(markerIdParam != null);
     final MarkerId markerId = MarkerId(markerIdParam);
@@ -334,6 +342,14 @@ class _GoogleMapState extends State<GoogleMap> {
     }
   }
 
+  void onMarkerDrag(String markerIdParam, LatLng position) {
+    assert(markerIdParam != null);
+    final MarkerId markerId = MarkerId(markerIdParam);
+    if (_markers[markerId]?.onDrag != null) {
+      _markers[markerId].onDrag(position);
+    }
+  }
+  
   void onPolygonTap(String polygonIdParam) {
     assert(polygonIdParam != null);
     final PolygonId polygonId = PolygonId(polygonIdParam);
