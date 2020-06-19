@@ -169,6 +169,8 @@ class Marker {
     this.visible = true,
     this.zIndex = 0.0,
     this.onTap,
+    this.onDrag,
+    this.onDragStart,
     this.onDragEnd,
   }) : assert(alpha == null || (0.0 <= alpha && alpha <= 1.0));
 
@@ -226,8 +228,14 @@ class Marker {
   /// Callbacks to receive tap events for markers placed on this map.
   final VoidCallback onTap;
 
+  /// Signature reporting the new [LatLng] at the start of a drag event.
+  final ValueChanged<LatLng> onDragStart;
+
   /// Signature reporting the new [LatLng] at the end of a drag event.
   final ValueChanged<LatLng> onDragEnd;
+
+  /// Signature reporting the new [LatLng] during the drag event.
+  final ValueChanged<LatLng> onDrag;
 
   /// Creates a new [Marker] object whose values are the same as this instance,
   /// unless overwritten by the specified parameters.
@@ -244,6 +252,8 @@ class Marker {
     bool visibleParam,
     double zIndexParam,
     VoidCallback onTapParam,
+    ValueChanged<LatLng> onDragStartParam,
+    ValueChanged<LatLng> onDragParam,
     ValueChanged<LatLng> onDragEndParam,
   }) {
     return Marker(
@@ -260,6 +270,8 @@ class Marker {
       visible: visibleParam ?? visible,
       zIndex: zIndexParam ?? zIndex,
       onTap: onTapParam ?? onTap,
+      onDragStart: onDragStartParam ?? onDragStart,
+      onDrag: onDragParam ?? onDrag,
       onDragEnd: onDragEndParam ?? onDragEnd,
     );
   }
