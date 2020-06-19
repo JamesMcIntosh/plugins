@@ -71,23 +71,38 @@ class GoogleMapController {
     _googleMapsFlutterPlatform
         .onMarkerTap(mapId: mapId)
         .listen((MarkerTapEvent e) => _googleMapState.onMarkerTap(e.value));
+
+    _googleMapsFlutterPlatform.onMarkerDragStart(mapId: mapId).listen(
+        (MarkerDragStartEvent e) =>
+            _googleMapState.onMarkerDragStart(e.value, e.position));
+
+    _googleMapsFlutterPlatform.onMarkerDrag(mapId: mapId).listen(
+        (MarkerDragEvent e) =>
+            _googleMapState.onMarkerDrag(e.value, e.position));
+
     _googleMapsFlutterPlatform.onMarkerDragEnd(mapId: mapId).listen(
         (MarkerDragEndEvent e) =>
             _googleMapState.onMarkerDragEnd(e.value, e.position));
+
     _googleMapsFlutterPlatform.onInfoWindowTap(mapId: mapId).listen(
         (InfoWindowTapEvent e) => _googleMapState.onInfoWindowTap(e.value));
+
     _googleMapsFlutterPlatform
         .onPolylineTap(mapId: mapId)
         .listen((PolylineTapEvent e) => _googleMapState.onPolylineTap(e.value));
+
     _googleMapsFlutterPlatform
         .onPolygonTap(mapId: mapId)
         .listen((PolygonTapEvent e) => _googleMapState.onPolygonTap(e.value));
+
     _googleMapsFlutterPlatform
         .onCircleTap(mapId: mapId)
         .listen((CircleTapEvent e) => _googleMapState.onCircleTap(e.value));
+
     _googleMapsFlutterPlatform
         .onTap(mapId: mapId)
         .listen((MapTapEvent e) => _googleMapState.onTap(e.position));
+
     _googleMapsFlutterPlatform.onLongPress(mapId: mapId).listen(
         (MapLongPressEvent e) => _googleMapState.onLongPress(e.position));
   }

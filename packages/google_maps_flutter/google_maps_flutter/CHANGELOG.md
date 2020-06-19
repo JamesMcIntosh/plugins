@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Add additional marker drag events.
+
 ## 1.0.3
 
 * Update android compileSdkVersion to 29.
